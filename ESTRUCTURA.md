@@ -140,17 +140,21 @@ export const useTickets = () => {
 2. ✅ **Interfaces TypeScript** (`Ticket.ts`, `PaymentMethod.ts`)
 3. ✅ **Datos mock** (100 boletos + métodos de pago)
 4. ✅ **Servicio de boletos** (preparado para mock y API real)
+5. ✅ **NavBar.tsx** e integrado en App.tsx
+6. ✅ **HeroSection.tsx** con CountdownTimer funcional
+7. ✅ **Configuración Tailwind v4** optimizada
+8. ✅ **Repositorio Git** inicializado y rama `test` arriba
 
 ---
 
 ## 🚀 Próximos Pasos (Tú los haces):
 
-### **Día 1 (Hoy):**
+### **Día 1 (Status: En Proceso 🚧):**
 
-1. Crear `Navbar.tsx`
-2. Crear `Footer.tsx`
-3. Crear `HeroSection.tsx`
-4. Integrar en `App.tsx`
+1. ✅ Crear `Navbar.tsx`
+2. ⏳ Crear `Footer.tsx` (¡Siguiente paso!)
+3. ✅ Crear `HeroSection.tsx`
+4. ✅ Integrar en `App.tsx`
 
 ### **Día 2:**
 
