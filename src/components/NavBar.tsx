@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Navbar responsive con menú hamburguesa para móvil
@@ -11,6 +12,7 @@ import { useState } from 'react'
  * pero en React el estado se actualiza automáticamente en la UI
  */
 export function NavBar() {
+    const navigate = useNavigate();
     // Estado para controlar si el menú móvil está abierto
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -18,8 +20,8 @@ export function NavBar() {
         <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-blue-500/30 p-4">
             <div className="hidden md:grid md:grid-cols-3 md:items-center max-w-7xl mx-auto">
                 {/* Logo - Izquierda */}
-                <div className="flex justify-start">
-                    <h1 className="text-xl font-bold text-white tracking-tight">
+                <div className="flex justify-start" onClick={() => navigate('/')}>
+                    <h1 className="text-xl font-bold text-white tracking-tight cursor-pointer">
                         Sorteos <span className="text-blue-500">del Sureste</span>
                     </h1>
                 </div>
@@ -33,8 +35,8 @@ export function NavBar() {
                         <li className="text-gray-300 cursor-pointer hover:text-blue-400 transition-colors font-medium">
                             Precios
                         </li>
-                        <li className="text-gray-300 cursor-pointer hover:text-blue-400 transition-colors font-medium">
-                            Contacto
+                        <li className="text-gray-300 cursor-pointer hover:text-blue-400 transition-colors font-medium" onClick={()=>(navigate('/pagos'))}>
+                            Metodos de pago
                         </li>
                     </ul>
                 </div>

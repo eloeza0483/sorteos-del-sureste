@@ -1,4 +1,4 @@
-import { Ticket } from '../interfaces/Ticket'
+import type { Ticket } from '../interfaces/Ticket.ts'
 import { mockTickets } from '../data/mockTickets'
 
 /**

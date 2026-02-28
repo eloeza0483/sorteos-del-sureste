@@ -9,7 +9,7 @@ interface TimeLeft {
 
 export function CountdownTimer() {
     // 1. Definimos la fecha objetivo (ejemplo: 30 días a partir de ahora)
-    const [targetDate] = useState(new Date('2026-12-31T23:59:59').getTime());
+    const [targetDate] = useState(new Date('2026-03-04T23:59:59').getTime());
     
     // 2. Estado para guardar el tiempo que falta
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({
@@ -63,7 +63,7 @@ export function CountdownTimer() {
 function TimeUnit({ label, value }: { label: string; value: string }) {
     return (
         <div className="flex flex-col items-center">
-            <div className="bg-white/10 backdrop-blur-md border border-blue-500/30 rounded-lg p-3 md:p-4 min-w-[70px] md:min-w-[90px]">
+            <div className="bg-black/10 backdrop-blur-md border border-blue-500/30 rounded-lg p-3 md:p-4 min-w-[70px] md:min-w-[90px]">
                 <span className="text-3xl md:text-5xl font-bold text-white tabular-nums">
                     {value}
                 </span>

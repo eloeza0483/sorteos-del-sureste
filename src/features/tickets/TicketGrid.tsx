@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { Ticket } from '../../interfaces/Ticket';
 import { getTickets } from '../../services/ticketService';
 import { TicketCard } from './TicketCard';
+import { ReservationForm } from './ReservationForm';
 
 /**
  * TicketGrid - El contenedor principal de los boletos
@@ -15,6 +16,7 @@ export function TicketGrid() {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [selectedTickets, setSelectedTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
     // useEffect: Hook que se ejecuta cuando el componente aparece (como el constructor o init)
     useEffect(() => {
@@ -57,7 +59,7 @@ export function TicketGrid() {
     }
 
     return (
-        <section className="py-16 px-4 bg-black/40" id="tickets">
+        <section className="py-16 px-4 bg-black/40 scroll-mt-24" id="tickets">
             <div className="container mx-auto max-w-6xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -78,6 +80,14 @@ export function TicketGrid() {
                     ))}
                 </div>
 
+                {/* Modal de Reserva */}
+                <ReservationForm 
+                    show={showModal} 
+                    onClose={() => setShowModal(false)} 
+                    selectedTickets={selectedTickets}
+                    total={selectedTickets.reduce((acc, t) => acc + t.price, 0)}
+                />
+
                 {/* Barra Flotante de Selección (Carrito) */}
                 {selectedTickets.length > 0 && (
                     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl">
@@ -91,9 +101,17 @@ export function TicketGrid() {
                                     </span>
                                 </p>
                             </div>
-                            <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105 active:scale-95 shadow-lg">
-                                Reservar Ahora
-                            </button>
+                            <div className="flex gap-3">
+                                <button 
+                                    onClick={() => setSelectedTickets([])}
+                                    className="px-4 py-3 rounded-xl font-bold text-blue-200 hover:text-white hover:bg-white/10 transition-all"
+                                >
+                                    Limpiar
+                                </button>
+                                <button onClick={() => setShowModal(true)} className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105 active:scale-95 shadow-lg">
+                                    Reservar Ahora
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
